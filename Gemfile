@@ -40,6 +40,9 @@ group :doc, :development, :test do
 end
 
 group :development, :test do
+  # rspec need to be available in development too for the reails generators to generate the spec files
+  gem 'rspec-rails'
+  gem 'rspec-support'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   # Use byebug (replacement for debbuger not working with 2.1.3)
@@ -49,8 +52,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails'
-  gem 'rspec-support'
   gem 'shoulda-matchers'
   gem 'simplecov', :require => false
   gem 'factory_girl_rails'
