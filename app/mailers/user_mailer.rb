@@ -3,8 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def confirmation_request(user, host)
     @user = user
-    @url  = "http://#{host}/users/confirm_user"
-    # @url  = "localhost:3000/users/confirm_user"
+    @url  = "http://#{host}/confirmation/new/#{@user.token}"
     mail(to: @user.email, subject: "Please confirm your email ")
   end
 end
