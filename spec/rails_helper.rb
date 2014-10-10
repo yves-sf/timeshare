@@ -37,4 +37,18 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   # factorygirl syntax methods
   config.include FactoryGirl::Syntax::Methods
+  # clean DB
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.orm = "mongoid"
+  end
+
+  config.before(:example) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:example) do
+    DatabaseCleaner.clean
+  end
+
 end
