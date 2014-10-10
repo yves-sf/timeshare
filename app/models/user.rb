@@ -4,6 +4,7 @@ class User
   field :active, type: Mongoid::Boolean, default: false
   field :token,  type: String
 
+  # TODO uniqueness of email validation
 
   class << self
 

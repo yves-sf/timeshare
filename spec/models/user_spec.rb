@@ -8,11 +8,10 @@ RSpec.describe User, :type => :model do
 
   describe "::active" do
     it "return the active users" do
-      # debugger
       expect(User.active.to_a - [active_user, active_too]).to eq []
     end
 
-    it "d not return the active users" do
+    it "do not return the active users" do
       expect(User.inactive.to_a).to_not include active_user
     end
   end
