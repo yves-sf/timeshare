@@ -17,7 +17,17 @@ class User
 
   end
 
+  def active?
+    true == active
+  end
+
+  def inactive?
+    false == active
+  end
+
   def activate
-    self.update_attribute :active, true
+    if inactive?
+      self.update_attribute :active, true
+    end
   end
 end

@@ -17,9 +17,13 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  describe "#actif?" do
+  describe "#active?" do
     it {expect(active_user.active?).to eq true}
     it {expect(inactive_user.active?).to eq false}
+  end
+  describe "#inactive?" do
+    it {expect(inactive_user.inactive?).to eq true}
+    it {expect(active_user.inactive?).to eq false}
   end
 
   describe "#activate" do
@@ -29,6 +33,9 @@ RSpec.describe User, :type => :model do
 
       expect(activated.active).to eq true
     end
-  end
 
+    context "already activated user" do
+      it{expect(active_user.activate).to eq nil}
+    end
+  end
 end
