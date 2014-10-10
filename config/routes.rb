@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get  'confirmations/new'
 
   get  'sessions/new'
   post 'sessions/create'
