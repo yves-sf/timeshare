@@ -37,4 +37,14 @@ RSpec.describe User, :type => :model do
       it{expect(active_user.activate).to eq nil}
     end
   end
+
+  describe "validations" do
+    let(:bad_email_format) { build :active_user, email: "ertyertyu" }
+    # subject { active_user }
+    context "already existing customer" do
+      it { is_expected.to validate_uniqueness_of :email }
+      it { is_expected.to validate_presence_of   :email }
+      it { expect(bad_email_format).to_not be_valid}
+    end
+  end
 end
