@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    meta content='text/html; charset=UTF8' http-equiv='Content-Type'
+  body
+    h2 New reservation request
+    br
+    br
+    div From: #{@user.first_name} #{@user.last_name}
+    br
+    div Received from IP address: #{@ip_address}
+    br
+    div Requested date: #{@reservation.preferred_housing_date}
+    br
+    div Additional question: #{@reservation.additional_questions}
+    br
+    div
+      'Amenities:
+      - Reservation.amenities.each do |amenity|
+        - if ['1', true].include? @reservation.send(amenity)
+          = amenity.to_s.humanize
+          = ", " unless Reservation.amenities.last == amenity
+    br
+    br
+    div Thank you for your order
+    div Customer reservation specialist
+
