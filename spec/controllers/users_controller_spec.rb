@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe UsersController, :type => :controller do
 
   let(:valid_attributes) {
-    {first_name: 'Durand', last_name: 'Dupond'}
+    {first_name: 'Durand', last_name: 'Dupond', telephone: '123-456-7890'}
   }
 
   let(:initial_attributes) {
-    { email: "dd@example.com", token: 'qwerty'}
+    { email: "dd@example.com", token: 'qwerty', telephone: '123-456-7890'}
   }
 
   let(:invalid_attributes) {

@@ -10,9 +10,13 @@ class User
 
   has_many :reservations, dependent: :delete
 
-  validates :email, presence: true,
+  validates :email,
+            presence: true,
             uniqueness: true,
             format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/ }
+  validates :telephone,
+            presence: true,
+            format: { with: /\d{3}[ -:]?\d{3}[ -:]?\d{4}/ }
 
   class << self
 

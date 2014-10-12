@@ -39,12 +39,26 @@ RSpec.describe User, :type => :model do
   end
 
   describe "validations" do
-    let(:bad_email_format) { build :active_user, email: "ertyertyu" }
-    # subject { active_user }
-    context "already existing customer" do
+    context "email" do
+      let(:bad_email_format) { build :active_user, email: "ertyertyu" }
+
       it { is_expected.to validate_uniqueness_of :email }
       it { is_expected.to validate_presence_of   :email }
       it { expect(bad_email_format).to_not be_valid}
+    end
+
+    context "telephone" do
+      context "bad phone" do
+        let(:bad_phone_format) { build :active_user, telephone: "ertyertyu" }
+
+        it { is_expected.to validate_presence_of :telephone }
+      end
+
+      context "good phone formats"
+      ['1234567890', '123-456-7890', '123 456 7890', '123:456:7890'].each do |valid_tel|
+        let(:good_phone) { build :active_user, telephone: valid_tel }
+        it { expect(good_phone).to_not be_valid }
+      end
     end
   end
 end
