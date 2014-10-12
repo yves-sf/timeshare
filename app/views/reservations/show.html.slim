@@ -1,22 +1,28 @@
 p#notice = notice
 
-H2 Your registration request has been succesful
+H2 Your reservation request has been successful
+
+p Here you reservation details:
 
 p
-  strong Preferred housing date:&nbsp;
-  = @reservation.preferred_housing_date
+  strong> Name:
+  = full_name
 p
-  strong Additional questions:&nbsp;
-  = @reservation.additional_questions
+  strong> Email:
+  = email
+p
+  strong> Telephone:
+  = telephone
+p
+  strong> Email:
+  = email
+p
+  strong> Preferred housing date:
+  = preferred_housing_date
+p
+  strong> Additional questions:
+  = additional_questions
 p
   strong Amenities:
   br
-  - Reservation.amenities.each do |amenity|
-    - if ['1', true].include? @reservation.send(amenity)
-      = amenity.to_s.humanize
-      br
-
-
-/= link_to 'Edit', edit_reservation_path(@reservation)
-/'|
-/= link_to 'Back', reservations_path
+  = amenities
