@@ -18,7 +18,7 @@ class ReservationsController < InheritedResources::Base
   end
 
   def send_confirmation_emails(reservation, current_user, request)
-    UserMailer.confirmation_reservation(reservation, current_user, request.host).deliver
+    UserMailer.confirmation_reservation(reservation, current_user, request.host_with_port).deliver
     OfficeMailer.desk_resa_request(reservation, current_user, request.ip).deliver
   end
 
