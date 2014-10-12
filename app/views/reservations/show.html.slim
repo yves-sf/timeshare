@@ -1,0 +1,22 @@
+p#notice = notice
+
+H2 Your registration request has been succesful
+
+p
+  strong Preferred housing date:&nbsp;
+  = @reservation.preferred_housing_date
+p
+  strong Additional questions:&nbsp;
+  = @reservation.additional_questions
+p
+  strong Amenities:
+  br
+  - Reservation.amenities.each do |amenity|
+    - if ['1', true].include? @reservation.send(amenity)
+      = amenity.to_s.humanize
+      br
+
+
+/= link_to 'Edit', edit_reservation_path(@reservation)
+/'|
+/= link_to 'Back', reservations_path
