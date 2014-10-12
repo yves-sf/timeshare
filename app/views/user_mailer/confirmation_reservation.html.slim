@@ -20,7 +20,7 @@ html
       - Reservation.amenities.each do |amenity|
         - if ['1', true].include? @reservation.send(amenity)
           = amenity.to_s.humanize
-          '&nbsp;
+          = ", " unless Reservation.amenities.last == amenity
     br
     br
     div Thank you for your order
