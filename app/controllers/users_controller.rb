@@ -5,7 +5,7 @@ class UsersController < InheritedResources::Base
 
   def token
     @user = User.where(token: params[:token]).first
-    if @user
+    unless @user
       session[:user_id] = @user.id.to_s
       if @user.inactive?
         @user.activate
@@ -20,6 +20,9 @@ class UsersController < InheritedResources::Base
   end
 
   def update
+    if @user = User.where(email: params[:email])
+      render token and return
+    end
     update! do |format|
       format.html { redirect_to new_reservation_path }
     end

@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
 
-  def new
-  end
 
   def create
     @user = User.new(email: params["email"], token: SecureRandom.urlsafe_base64)
@@ -11,11 +9,9 @@ class SessionsController < ApplicationController
         if @user.save
           UserMailer.confirmation_request(@user, @host).deliver
         else
-          render action: :index
+          redirect_to "/", notice: "Email #{params[:email]} already taken of format error"
         end
       end
     end
-
-
   end
 end
