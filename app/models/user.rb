@@ -1,11 +1,14 @@
 class User
   include Mongoid::Document
+
   field :first_name, type: :string
   field :last_name, type: String
   field :telephone, type: String
   field :email,  type: String
   field :active, type: Mongoid::Boolean, default: false
   field :token,  type: String
+
+  has_many :reservations, dependent: :delete
 
   # TODO uniqueness of email validation
 

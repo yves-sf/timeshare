@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :reservations
+
   resources :users, only: [:show, :edit, :update]
   get  'users/:token/token/', controller: :users, action: :token # /users/E3YwkxZfBTjAHC9vPKGHtw/token
 
