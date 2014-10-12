@@ -9,6 +9,8 @@ class Reservation
 
   belongs_to :user
 
+  delegate :email, :telephone, :first_name, :last_name, :full_name, to: :user
+
   # dynamic fields - todo if many or variable, move to DB and probably embed in reservation
   def self.amenities
     @amenities ||= [:pool, :rec_room, :movie, :theater, :on_site_doctor, :time_machine ]
