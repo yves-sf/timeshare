@@ -23,6 +23,12 @@ html
           = ", " unless Reservation.amenities.last == amenity
     br
     br
+    div you can view your reservation online by using this link:
+      a href="#{@url_resa}" Link to reservation
+    br
+    div for #5 2nd click on initial link redirect to reservation info:
+      a href="#{@init_url}" Link from initial confirmation email
+
     div Thank you for your order
     div Customer reservation specialist
 
