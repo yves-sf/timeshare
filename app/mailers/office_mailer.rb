@@ -5,6 +5,6 @@ class OfficeMailer < ActionMailer::Base
     @ip_address  = ip_address
     @reservation = reservation
     @user        = user
-    mail(to: 'tours@example.com', subject: 'Reservation request confirmation')
+    mail(to: 'tours@example.com', subject: 'Time Share Scheduled')
   end
 end
