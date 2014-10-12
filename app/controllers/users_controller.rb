@@ -9,11 +9,13 @@ class UsersController < InheritedResources::Base
       session[:user_id] = @user.id.to_s
       if @user.inactive?
         @user.activate
+      elsif @user.reservations.any?
+        redirect_to @user.reservations.first
       else
-        # todo redirect to show reservation
+        # nothing to do just render user_profile
       end
     else
-      # todo token not found - redirect register first
+      redirect_to  "/", alert: "User not found"
     end
   end
 
