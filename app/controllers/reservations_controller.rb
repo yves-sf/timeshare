@@ -8,7 +8,7 @@ class ReservationsController < InheritedResources::Base
 
   def create
     @reservation = current_user.reservations.create(reservation_params)
-
+    UserMailer.confirmation_reservation(@reservation, current_user).deliver
     # todo send email to tour
     redirect_to @reservation
   end

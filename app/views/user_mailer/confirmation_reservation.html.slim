@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    meta content='text/html; charset=UTF8' http-equiv='Content-Type'
+  body
+    h2 Reservation request confirmation
+    div Dear #{@user.first_name}
+    br
+    br
+    div
+      ' Your reservation request has been submitted to our scheduling department.
+      ' Please review the information below and contact us at 888 888 1234 if you see any error.
+    br
+    div Date: #{@reservation.preferred_housing_date}
+    br
+    div Additional question: #{@reservation.additional_questions}
+    br
+    div
+      'Amenities:
+      - Reservation.amenities.each do |amenity|
+        - if ['1', true].include? @reservation.send(amenity)
+          = amenity.to_s.humanize
+          '&nbsp;
+    br
+    br
+    div Thank you for your order
+    div Customer reservation specialist
+
