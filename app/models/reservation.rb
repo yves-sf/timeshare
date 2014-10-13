@@ -4,7 +4,7 @@ class Reservation
   include DynamicAttributeSupport
 
   field :user_id,                type: :relation
-  field :preferred_housing_date, type: Time
+  field :preferred_housing_date, type: DateTime
   field :additional_questions,   type: String
 
   belongs_to :user
