@@ -3,7 +3,7 @@
 ####Dependencies
 
 * MongoDB, on OSX 10.6 and later: `brew update` then `brew install mongodb`
-* Mongo will by default write in a folder `/dat/db` (if you want to change the configuration http://docs.mongodb.org/manual/reference/configuration-options/)
+* Mongo will by default write in a folder `/dat/db` and you will probably have to create it on your mac's root folder. (If you want to change the configuration http://docs.mongodb.org/manual/reference/configuration-options/)
 * RVM  1.25.31 (stable) for Ruby and Genset management
 * Ruby 2.1.3
 * All other dependencies are set in the gemfile
