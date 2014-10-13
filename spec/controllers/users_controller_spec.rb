@@ -63,7 +63,10 @@ RSpec.describe UsersController, :type => :controller do
     describe "with valid params" do
       let(:new_attributes) { {telephone: '1234567890'} }
       let!(:user) { User.create! initial_attributes }
-      before { put :update, {:id => user.to_param, :user => new_attributes}, valid_session }
+      before do
+        valid_user_session = {user_id: user.id}
+        put :update, {:id => user.to_param, :user => new_attributes}, valid_user_session
+      end
 
       it { expect(assigns(:user).telephone).to eq new_attributes[:telephone] }
       it { expect(assigns(:user)).to eq(user) }

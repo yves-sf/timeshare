@@ -20,8 +20,13 @@ class UsersController < InheritedResources::Base
   end
 
   def update
-    update! do |format|
-      format.html { redirect_to new_reservation_path }
+    @user = current_user
+    @user.attributes = user_params
+    if @user.valid?
+      @user.save!
+      redirect_to new_reservation_path
+    else
+      render :token
     end
   end
 

@@ -16,7 +16,8 @@ class User
             format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/ }
   validates :telephone,
             presence: true,
-            format: { with: /\d{3}[ -:]?\d{3}[ -:]?\d{4}/ }
+            format: { with: /\A\d{3}[ -:]?\d{3}[ -:]?\d{4}\Z/ },
+            on: :update
 
   class << self
 
