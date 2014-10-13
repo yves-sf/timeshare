@@ -8,6 +8,13 @@
 * Ruby 2.1.3
 * All other dependencies are set in the gemfile
 
+####Test Mailer 
+
+* To test the application email sent, I'm making use of MailCatcher: http://mailcatcher.me/
+* The application is setup to send the emails on localhost:1025 used by mailcatcher to intercept all outgoing emails and show them into a catchall mailbox.
+* To see the emails, open a browser on: http://localhost:1080/
+
+
 ####Installation
 
 For development mode and test
