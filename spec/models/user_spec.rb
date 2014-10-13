@@ -49,9 +49,11 @@ RSpec.describe User, :type => :model do
 
     context "telephone" do
       context "bad phone" do
-        let(:bad_phone_format) { build :active_user, telephone: "ertyertyu" }
+        let(:phone_format_nul) { create :active_user, telephone: nil, email: 'good.email@example.com' }
+        let(:bad_phone_format) { create :active_user, telephone: "qwerty", email: 'good.email@example.com' }
 
-        it { is_expected.to validate_presence_of :telephone }
+        specify { expect(phone_format_nul.update).to eq false}
+        specify { expect(bad_phone_format.update).to eq false}
       end
 
       context "good phone formats"
