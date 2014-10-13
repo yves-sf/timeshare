@@ -6,10 +6,15 @@ class Reservation
   field :user_id,                type: :relation
   field :preferred_housing_date, type: DateTime
   field :additional_questions,   type: String
+  field :rating,                 type: Integer
 
   belongs_to :user
 
   delegate :email, :telephone, :first_name, :last_name, :full_name, to: :user
+
+  # Revue note:
+  # Having no info about how the rating should be related, I opted for the simplest: the reservation
+  # so I just added a field to the reservation record
 
   # dynamic fields - todo if many or variable, move to DB and probably embed in reservation
   def self.amenities

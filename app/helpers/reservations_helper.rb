@@ -20,6 +20,10 @@ module ReservationsHelper
     @reservation.additional_questions
   end
 
+  def rating
+    @reservation.rating
+  end
+
   def amenities
     ret = ""
     Reservation.amenities.each do |amenity|
@@ -28,6 +32,14 @@ module ReservationsHelper
       end
     end
     ret.html_safe
+  end
+
+  def rating_box
+    if @reservation.rating
+      render partial: "rating_results"
+    else
+      render partial: "rating_form"
+    end
   end
 
 end

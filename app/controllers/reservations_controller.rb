@@ -19,7 +19,7 @@ class ReservationsController < InheritedResources::Base
 
   private
   def reservation_params
-    params.require(:reservation).permit([:preferred_housing_date, :additional_questions].concat(Reservation.amenities))
+    params.require(:reservation).permit([:preferred_housing_date, :additional_questions, :rating].concat(Reservation.amenities))
   end
 
   def send_confirmation_emails(reservation, current_user, request)
